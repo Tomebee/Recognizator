@@ -8,7 +8,7 @@ namespace Recognizator.AI
         PredictionEngine<Image, ImagePrediction> Build(MLContext context);
     }
 
-    public class PredictionEngineBuilder : IPredictionEngineBuilder
+    internal sealed class PredictionEngineBuilder : IPredictionEngineBuilder
     {
         private readonly IModelTrainer _modelTrainer;
 

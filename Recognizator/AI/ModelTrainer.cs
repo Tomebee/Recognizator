@@ -11,7 +11,7 @@ namespace Recognizator.AI
         ITransformer Train(MLContext context);
     }
 
-    internal class ModelTrainer : IModelTrainer
+    internal sealed class ModelTrainer : IModelTrainer
     {
         private readonly IPipelineBuilder _pipelineBuilder;
         private readonly string _imagesPath = Path.Combine(Environment.CurrentDirectory, "..", "Images");

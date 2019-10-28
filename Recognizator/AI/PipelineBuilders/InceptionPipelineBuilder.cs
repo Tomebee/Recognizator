@@ -7,7 +7,7 @@ using System.Linq;
 namespace Recognizator.AI
 {
 
-    internal class InceptionPipelineBuilder : IPipelineBuilder
+    internal sealed class InceptionPipelineBuilder : IPipelineBuilder
     {
         private struct InceptionSettings
         {

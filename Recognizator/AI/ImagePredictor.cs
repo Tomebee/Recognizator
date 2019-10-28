@@ -9,7 +9,7 @@ namespace Recognizator.AI
         ImagePrediction Predict(string pathToImage);
     }
 
-    internal class ImagePredictor : IImagePredictor
+    internal sealed class ImagePredictor : IImagePredictor
     {
         private readonly MLContext _context;
         private readonly IPredictionEngineBuilder _predictionEngineBuilder;
