@@ -29,7 +29,10 @@ namespace Recognizator.Controllers
 
             var prediction = _imagePredictor.Predict(filePath);
 
-            return Ok(prediction);
+            return Ok(prediction.MaxScore >= 0.6f ? 
+                $"{prediction.PredictedLabel} has been recognized with {(prediction.MaxScore * 100).ToString("#,#.00")}% probability." 
+                    : 
+                "Unfortunately nothing bas been recognized.");
         }
 
     }
