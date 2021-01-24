@@ -1,9 +1,12 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Recognizator.AI;
+using Recognizator.AI.Training;
 using Recognizator.Services;
 
 namespace Recognizator
@@ -22,7 +25,6 @@ namespace Recognizator
         {
             services.AddControllers();
             services.AddTransient<IImageUploader, ImageUploader>();
-            services.AddTransient<IPipelineBuilder, InceptionPipelineBuilder>();
             services.AddTransient<IModelTrainer, ModelTrainer>();
             services.AddSingleton<IImagePredictor, ImagePredictor>();
             services.AddTransient<IPredictionEngineBuilder, PredictionEngineBuilder>();
@@ -41,7 +43,7 @@ namespace Recognizator
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
