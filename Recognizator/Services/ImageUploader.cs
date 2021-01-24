@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,18 +13,14 @@ namespace Recognizator.Services
     }
     internal sealed class ImageUploader : IImageUploader
     {
-        private readonly string[] _availableExtensions = new[] 
-        {
+        private readonly string[] _availableExtensions = {
             ".jpg",
             ".png",
             ".jpeg"
         };
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ImageUploader(IWebHostEnvironment hostEnvironment)
-        {
-            _hostEnvironment = hostEnvironment;
-        }
+        public ImageUploader(IWebHostEnvironment hostEnvironment) => _hostEnvironment = hostEnvironment;
 
         public async Task<string> Upload(IFormFile imageFile)
         {
@@ -41,7 +36,7 @@ namespace Recognizator.Services
             }
 
             var path = Path.Combine(_hostEnvironment.WebRootPath, "images", $"{Guid.NewGuid() + extension}");
-            using (var stream = new FileStream(path, FileMode.Create))
+            await using (var stream = new FileStream(path, FileMode.Create))
                 await imageFile.CopyToAsync(stream);
 
             return path;

@@ -1,0 +1,14 @@
+{
+	"id": "efb051a7-41b2-439a-8578-784474878771",
+	"values": [
+		{
+			"key": "API_URL",
+			"value": "https://localhost:5001",
+			"enabled": true
+		}
+	],
+	"name": "Recognizator Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2019-11-17T20:07:22.721Z",
+	"_postman_exported_using": "Postman/7.11.0"
+}
